@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="Assistente virtual de triagem informativa para orientar o próximo passo no cuidado do seu pet.">
+  <title>BemPet — cuidado começa com escuta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="BemPet, início">
+      <span class="brand-mark" aria-hidden="true">b<span>+</span></span>
+      <span>bem<span class="brand-light">pet</span><small>CLÍNICA VETERINÁRIA</small></span>
+    </a>
+    <div class="header-right">
+      <span class="open-status"><span></span> Cuidado em primeiro lugar</span>
+      <button class="demo-toggle" id="demoToggle" type="button" aria-label="Ativar demonstração">▶ <span>Ver demonstração</span></button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="intro" aria-labelledby="page-title">
+      <div class="eyebrow"><span class="eyebrow-line"></span> ORIENTAÇÃO INICIAL</div>
+      <h1 id="page-title">Cada cuidado<br>começa com <em>escuta.</em></h1>
+      <p>Conte pra gente o que está acontecendo com seu pet. Vamos ajudar você a entender qual pode ser o próximo passo.</p>
+      <div class="trust-row">
+        <span><span class="trust-icon">✳</span> Simples e acolhedor</span>
+        <span><span class="trust-icon">⌁</span> Sem diagnóstico automático</span>
+      </div>
+      <div class="pet-doodle" aria-hidden="true">
+        <div class="doodle-circle"></div>
+        <div class="doodle-sun"></div>
+        <span class="doodle-spark spark-one">✳</span>
+        <span class="doodle-spark spark-two">✦</span>
+        <div class="doodle-pet">🐕</div>
+        <span class="doodle-caption">cuidar é estar presente</span>
+      </div>
+    </section>
+
+    <section class="chat-card" aria-label="Assistente de triagem veterinária">
+      <div class="chat-head">
+        <div class="assistant-avatar" aria-hidden="true">b<span>+</span></div>
+        <div class="assistant-meta">
+          <strong>Assistente BemPet</strong>
+          <span><i></i> Orientação inicial</span>
+        </div>
+        <button class="reset-button" id="resetChat" type="button" aria-label="Reiniciar conversa" title="Reiniciar conversa">↻</button>
+      </div>
+      <div class="safety-note"><span aria-hidden="true">ⓘ</span> Esta conversa orienta sobre urgência e não substitui a avaliação de um médico-veterinário.</div>
+      <div id="urgentBanner" class="urgent-banner" hidden>
+        <div><strong>Precisa de ajuda agora?</strong><span>Não espere terminar a conversa se seu pet estiver em risco.</span></div>
+        <a id="urgentWhatsApp" href="#" target="_blank" rel="noopener">Falar com a clínica ↗</a>
+        <a id="urgentCall" href="#">Ligar para a clínica</a>
+      </div>
+      <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-relevant="additions"></div>
+      <div class="chat-controls" id="chatControls">
+        <div id="quickReplies" class="quick-replies"></div>
+        <form id="textForm" class="text-form">
+          <label class="sr-only" for="freeText">Conte mais detalhes (opcional)</label>
+          <input id="freeText" type="text" maxlength="400" placeholder="Se quiser, conte mais detalhes…" autocomplete="off">
+          <button type="submit" aria-label="Enviar mensagem">↑</button>
+        </form>
+        <p class="input-hint">Não precisa saber os termos certos. Conte do seu jeito.</p>
+      </div>
+      <section id="resultPanel" class="result-panel" hidden aria-live="polite"></section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>BemPet <span aria-hidden="true">✳</span> Cuidado com carinho e responsabilidade.</span>
+    <span>Se houver piora, procure atendimento veterinário.</span>
+  </footer>
+
+  <dialog id="bookingDialog" class="booking-dialog">
+    <form id="bookingForm" method="dialog">
+      <div class="dialog-heading">
+        <div><span class="eyebrow">PRÓXIMO PASSO</span><h2>Vamos combinar uma visita?</h2><p>Preencha os dados para preparar seu pedido de agendamento.</p></div>
+        <button class="dialog-close" type="button" id="closeBooking" aria-label="Fechar">×</button>
+      </div>
+      <label for="tutorName">Nome do tutor</label>
+      <input id="tutorName" name="tutorName" required maxlength="100" placeholder="Seu nome">
+      <label for="petName">Nome do pet</label>
+      <input id="petName" name="petName" required maxlength="100" placeholder="Nome do seu companheiro">
+      <div class="form-grid">
+        <div><label for="bookingDate">Data desejada</label><input id="bookingDate" name="bookingDate" type="date" required></div>
+        <div><label for="bookingTime">Horário desejado</label><input id="bookingTime" name="bookingTime" type="time" required></div>
+      </div>
+      <p class="dialog-disclaimer">Este pedido não confirma uma consulta. A clínica precisa confirmar disponibilidade.</p>
+      <button class="primary-button" type="submit">Preparar pedido no WhatsApp <span>↗</span></button>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
